@@ -192,8 +192,8 @@ class PrefetchedWrapper(object):
 
 
             with torch.cuda.stream(stream):
-                next_input = next_input.cuda(async=True)
-                next_target = next_target.cuda(async=True)
+                next_input = next_input.cuda(non_blocking=True)
+                next_target = next_target.cuda(non_blocking=True)
                 next_input = next_input.float()
                 next_input = next_input.sub_(mean).div_(std)
 
